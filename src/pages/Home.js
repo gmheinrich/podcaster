@@ -1,22 +1,24 @@
+/* eslint-disable react/jsx-key */
 import React from 'react'
-import logo from '../logo.svg'
-import '../App.css'
+import { CardPodcast } from '../components/sections/Home/CardPodcast'
+import { SearchContainer } from '../components/sections/Home/SearchContainer'
+import { Layout } from '../components/sections/Layout'
 
-export const Home = () => (
-  <div className='App'>
-    <header className='App-header'>
-      <img src={logo} className='App-logo' alt='logo' />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className='App-link'
-        href='https://reactjs.org'
-        target='_blank'
-        rel='noopener noreferrer'
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-)
+export const Home = () => {
+  const dummyListCard = Array(10).fill(0)
+
+  return (
+    <Layout>
+      <SearchContainer />
+      <div className='container-fluid'>
+        <div className='row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 row-cols-full-5 g-5'>
+          {dummyListCard.map(() => (
+            <div className='col'>
+              <CardPodcast />
+            </div>
+          ))}
+        </div>
+      </div>
+    </Layout>
+  )
+}
