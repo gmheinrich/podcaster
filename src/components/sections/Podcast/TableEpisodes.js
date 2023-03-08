@@ -1,7 +1,9 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { Table } from 'reactstrap'
 
-export const TableEpisodes = () => {
+export const TableEpisodes = ({ collection }) => {
   return (
     <Table striped>
       <thead>
@@ -12,21 +14,13 @@ export const TableEpisodes = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
+        {collection.map((episode) => (
+          <tr>
+            <td>{`${episode.trackName}`}</td>
+            <td>{`${episode.releaseDate}`}</td>
+            <td>{`${episode.trackTimeMillis}`}</td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   )

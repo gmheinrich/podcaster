@@ -9,8 +9,11 @@ function App() {
     <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='podcast' element={<Podcast />} />
-        <Route path='episode' element={<Episode />} />
+        <Route path='/podcast/:podcastId' element={<Podcast />} />
+        <Route
+          path='/podcast/:podcastId/episode/:episodeId'
+          element={<Episode />}
+        />
       </Routes>
     </div>
   )

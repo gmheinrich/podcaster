@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { Container } from 'reactstrap'
 import styled from 'styled-components'
@@ -7,10 +8,10 @@ const ContainerResume = styled(Container)`
   padding: 0;
 `
 
-export const TableResume = () => {
+export const TableResume = ({ total }) => {
   return (
     <ContainerResume className='shadow p-3 mb-5 bg-white'>
-      <h5>Episodes: 66</h5>
+      <h5>{`Episodes: ${total}`}</h5>
     </ContainerResume>
   )
 }
