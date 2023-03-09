@@ -7,16 +7,15 @@ import { Layout } from '../components/sections/Layout'
 
 export const Episode = () => {
   const location = useLocation()
-  const { trackName, episodeUrl, description } = location.state
-
-  const summary = {}
+  const { propsToCardPodcastFull, episode } = location.state
+  const { trackName, episodeUrl, description } = episode
 
   return (
     <Layout>
       <Container>
         <Row>
           <Col>
-            <CardPodcastFull summary={summary} />
+            <CardPodcastFull {...propsToCardPodcastFull} />
           </Col>
           <Col lg={8}>
             <CardEpisode title={trackName} description={description} source={episodeUrl} />

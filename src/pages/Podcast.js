@@ -44,16 +44,23 @@ export const Podcast = () => {
     }
   })
 
+  const propsToCardPodcastFull = {
+    title: summary.collectionName,
+    artist: summary.artistName,
+    image: summary.artworkUrl600,
+    description,
+  }
+
   return (
     <Layout>
       <Container>
         <Row>
           <Col>
-            <CardPodcastFull title={summary.collectionName} artist={summary.artistName} image={summary.artworkUrl600} description={description} />
+            <CardPodcastFull {...propsToCardPodcastFull} />
           </Col>
           <Col lg={8}>
             <TableResume total={summary.trackCount} />
-            <TableEpisodes collection={collection} />
+            <TableEpisodes collection={collection} propsToCardPodcastFull={propsToCardPodcastFull} />
           </Col>
         </Row>
       </Container>

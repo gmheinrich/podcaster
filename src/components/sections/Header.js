@@ -16,8 +16,6 @@ const StyledHeader = styled.header`
 export const Header = () => {
   const { loading } = useContext(GlobalDataContext)
 
-  console.log('loading', loading)
-
   return (
     <>
       <StyledHeader>

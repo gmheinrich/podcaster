@@ -7,7 +7,7 @@ import { getDate } from '../../../utils/getDate'
 import { getDuration } from '../../../utils/getDuration'
 import { StyledContainer } from '../../commons/StyledContainer'
 
-export const TableEpisodes = ({ collection }) => {
+export const TableEpisodes = ({ collection, propsToCardPodcastFull }) => {
   return (
     <StyledContainer>
       <Table striped>
@@ -22,7 +22,9 @@ export const TableEpisodes = ({ collection }) => {
           {collection.map((episode) => (
             <tr>
               <td>
-                <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={episode}>{`${episode.trackName}`}</Link>
+                <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={{ episode, propsToCardPodcastFull }}>
+                  {`${episode.trackName}`}
+                </Link>
               </td>
               <td>{getDate(episode.releaseDate)}</td>
               <td>{getDuration(episode.trackTimeMillis)}</td>
