@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { Spinner } from 'reactstrap'
 import styled from 'styled-components'
+import GlobalDataContext from '../GlobalDataContext'
 
 const StyledHeader = styled.header`
   display: flex;
@@ -11,12 +13,19 @@ const StyledHeader = styled.header`
   }
 `
 
-export const Header = () => (
-  <>
-    <StyledHeader>
-      <Link to={'/'} style={{ textDecoration: 'none' }}>
-        <h2>Podcaster</h2>
-      </Link>
-    </StyledHeader>
-  </>
-)
+export const Header = () => {
+  const { loading } = useContext(GlobalDataContext)
+
+  console.log('loading', loading)
+
+  return (
+    <>
+      <StyledHeader>
+        <Link to={'/'} style={{ textDecoration: 'none' }}>
+          <h2>Podcaster</h2>
+        </Link>
+        {loading ? <Spinner type='grow' style={{ color: 'steelblue' }} /> : null}
+      </StyledHeader>
+    </>
+  )
+}

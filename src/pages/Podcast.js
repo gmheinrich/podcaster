@@ -1,8 +1,9 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 import { CardPodcastFull } from '../components/commons/CardPodcastFull'
+import GlobalDataContext from '../components/GlobalDataContext'
 import { Layout } from '../components/sections/Layout'
 import { TableEpisodes } from '../components/sections/Podcast/TableEpisodes'
 import { TableResume } from '../components/sections/Podcast/TableResume'
@@ -10,6 +11,7 @@ import { routes } from '../constants/routes'
 import { getDescription } from '../utils/getDescription'
 
 export const Podcast = () => {
+  const { setLoading } = useContext(GlobalDataContext)
   const { podcastId } = useParams()
   const [summary, setSummary] = useState({})
   const [collection, setCollection] = useState([])
@@ -19,6 +21,7 @@ export const Podcast = () => {
   const url = routes.podcastEpisodes.replace('{podcastId}', podcastId)
 
   useEffect(() => {
+    setLoading(true)
     axios
       .get(url)
       .then((res) => {
@@ -35,6 +38,7 @@ export const Podcast = () => {
         .get(summary.feedUrl)
         .then((res) => {
           setDescription(getDescription(res.data))
+          setLoading(false)
         })
         .catch((error) => console.log(error))
     }
