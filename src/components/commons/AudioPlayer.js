@@ -3,12 +3,7 @@ import React from 'react'
 
 export const AudioPlayer = ({ source }) => {
   return (
-    <audio
-      id='player'
-      controls
-      controlsList='nodownload noplaybackrate'
-      style={{ width: '725px' }}
-    >
+    <audio id='player' controls controlsList='nodownload noplaybackrate' style={{ width: '770px' }}>
       <source src={source} />
     </audio>
   )

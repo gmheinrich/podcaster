@@ -18,7 +18,7 @@ export const Episode = () => {
           <Col>
             <CardPodcastFull summary={summary} />
           </Col>
-          <Col>
+          <Col lg={8}>
             <CardEpisode title={trackName} description={description} source={episodeUrl} />
           </Col>
         </Row>

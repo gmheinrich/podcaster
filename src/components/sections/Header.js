@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
@@ -13,7 +14,9 @@ const StyledHeader = styled.header`
 export const Header = () => (
   <>
     <StyledHeader>
-      <h2>Podcaster</h2>
+      <Link to={'/'} style={{ textDecoration: 'none' }}>
+        <h2>Podcaster</h2>
+      </Link>
     </StyledHeader>
   </>
 )
