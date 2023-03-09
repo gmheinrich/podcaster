@@ -2,7 +2,7 @@
 import React from 'react'
 import { StyledContainer } from '../../commons/StyledContainer'
 
-export const TableResume = ({ total }) => {
+export const TableResume = ({ total = '' }) => {
   return (
     <StyledContainer>
       <h5>{`Episodes: ${total}`}</h5>

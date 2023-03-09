@@ -31,7 +31,7 @@ export const TableEpisodes = ({ collection, propsToCardPodcastFull }) => {
         </thead>
         <tbody>
           {collection.map((episode) => (
-            <tr>
+            <tr key={episode.trackId}>
               <td>
                 <div style={{ cursor: 'pointer', color: 'royalblue' }} onClick={goToPodcast(episode, propsToCardPodcastFull)}>{`${episode.trackName}`}</div>
               </td>
