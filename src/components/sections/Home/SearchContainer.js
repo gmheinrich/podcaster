@@ -1,5 +1,5 @@
 import React from 'react'
-import { Badge, Col, Container, Row } from 'reactstrap'
+import { Badge, Col, Container, Input, Row } from 'reactstrap'
 
 export const SearchContainer = () => (
   <Container>
@@ -10,7 +10,7 @@ export const SearchContainer = () => (
         </Badge>
       </Col>
       <Col>
-        <input></input>
+        <Input></Input>
       </Col>
     </Row>
   </Container>

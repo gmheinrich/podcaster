@@ -35,6 +35,8 @@ export const useGetTopPodcast = () => {
         } else {
           setTopPodcastList(data)
         }
+      } else {
+        getDataFromOrigin()
       }
     }
   }, [])

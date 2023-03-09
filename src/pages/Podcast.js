@@ -15,7 +15,8 @@ export const Podcast = () => {
   const [collection, setCollection] = useState([])
   const [description, setDescription] = useState()
 
-  const url = `${routes.prefixURL}${routes.podcastEpisodes.replace('{podcastId}', podcastId)}`
+  // const url = `${routes.prefixURL}${routes.podcastEpisodes.replace('{podcastId}', podcastId)}`
+  const url = routes.podcastEpisodes.replace('{podcastId}', podcastId)
 
   useEffect(() => {
     axios
