@@ -45,6 +45,7 @@ export const Podcast = () => {
   })
 
   const propsToCardPodcastFull = {
+    podcastId,
     title: summary.collectionName,
     artist: summary.artistName,
     image: summary.artworkUrl600,
