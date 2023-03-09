@@ -3,6 +3,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
+import { getDate } from '../../../utils/getDate'
+import { getDuration } from '../../../utils/getDuration'
 
 export const TableEpisodes = ({ collection }) => {
   console.log('collection', collection)
@@ -22,8 +24,8 @@ export const TableEpisodes = ({ collection }) => {
             <td>
               <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={episode}>{`${episode.trackName}`}</Link>
             </td>
-            <td>{`${episode.releaseDate}`}</td>
-            <td>{`${episode.trackTimeMillis}`}</td>
+            <td>{getDate(episode.releaseDate)}</td>
+            <td>{getDuration(episode.trackTimeMillis)}</td>
           </tr>
         ))}
       </tbody>
