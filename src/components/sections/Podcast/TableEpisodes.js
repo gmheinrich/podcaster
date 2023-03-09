@@ -5,30 +5,31 @@ import { Link } from 'react-router-dom'
 import { Table } from 'reactstrap'
 import { getDate } from '../../../utils/getDate'
 import { getDuration } from '../../../utils/getDuration'
+import { StyledContainer } from '../../commons/StyledContainer'
 
 export const TableEpisodes = ({ collection }) => {
-  console.log('collection', collection)
-
   return (
-    <Table striped>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Date</th>
-          <th>Duration</th>
-        </tr>
-      </thead>
-      <tbody>
-        {collection.map((episode) => (
+    <StyledContainer>
+      <Table striped>
+        <thead>
           <tr>
-            <td>
-              <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={episode}>{`${episode.trackName}`}</Link>
-            </td>
-            <td>{getDate(episode.releaseDate)}</td>
-            <td>{getDuration(episode.trackTimeMillis)}</td>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration</th>
           </tr>
-        ))}
-      </tbody>
-    </Table>
+        </thead>
+        <tbody>
+          {collection.map((episode) => (
+            <tr>
+              <td>
+                <Link to={`/podcast/${episode.collectionId}/episode/${episode.trackId}`} state={episode}>{`${episode.trackName}`}</Link>
+              </td>
+              <td>{getDate(episode.releaseDate)}</td>
+              <td>{getDuration(episode.trackTimeMillis)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </StyledContainer>
   )
 }

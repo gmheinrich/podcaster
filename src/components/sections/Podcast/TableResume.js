@@ -1,17 +1,11 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { Container } from 'reactstrap'
-import styled from 'styled-components'
-
-const ContainerResume = styled(Container)`
-  // border: 1px solid black;
-  padding: 0;
-`
+import { StyledContainer } from '../../commons/StyledContainer'
 
 export const TableResume = ({ total }) => {
   return (
-    <ContainerResume className='shadow p-3 mb-5 bg-white'>
+    <StyledContainer>
       <h5>{`Episodes: ${total}`}</h5>
-    </ContainerResume>
+    </StyledContainer>
   )
 }
