@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 import { CardPodcastFull } from '../components/commons/CardPodcastFull'
 import GlobalDataContext from '../components/GlobalDataContext'
-import { Layout } from '../components/sections/Layout'
 import { TableEpisodes } from '../components/sections/Podcast/TableEpisodes'
 import { TableResume } from '../components/sections/Podcast/TableResume'
 import { routes } from '../constants/routes'
@@ -53,7 +52,7 @@ export const Podcast = () => {
   }
 
   return (
-    <Layout>
+    <>
       <Container>
         <Row>
           <Col>
@@ -65,6 +64,6 @@ export const Podcast = () => {
           </Col>
         </Row>
       </Container>
-    </Layout>
+    </>
   )
 }

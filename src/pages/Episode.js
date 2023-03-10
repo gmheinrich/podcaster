@@ -3,7 +3,6 @@ import { useLocation } from 'react-router'
 import { Col, Container, Row } from 'reactstrap'
 import { CardPodcastFull } from '../components/commons/CardPodcastFull'
 import { CardEpisode } from '../components/sections/Episode/CardEpisode'
-import { Layout } from '../components/sections/Layout'
 
 export const Episode = () => {
   const location = useLocation()
@@ -11,7 +10,7 @@ export const Episode = () => {
   const { trackName, episodeUrl, description } = episode
 
   return (
-    <Layout>
+    <>
       <Container>
         <Row>
           <Col>
@@ -22,6 +21,6 @@ export const Episode = () => {
           </Col>
         </Row>
       </Container>
-    </Layout>
+    </>
   )
 }

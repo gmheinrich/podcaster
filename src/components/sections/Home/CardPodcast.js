@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import { get } from 'lodash'
 import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, CardBody, CardSubtitle, CardTitle } from 'reactstrap'
@@ -7,11 +6,7 @@ import { routes } from '../../../constants/routes'
 
 export const CardPodcast = ({ podcast }) => {
   const navigate = useNavigate()
-
-  const imageSrc = get(podcast, 'im:image[2].label', '')
-  const name = get(podcast, 'im:name.label', '')
-  const author = get(podcast, 'im:artist.label', '')
-  const podcastId = get(podcast, 'id.attributes.im:id', '')
+  const { imageSrc, name, author, podcastId } = podcast
 
   const goToPodcast = useCallback(() => {
     navigate(routes.podcast.replace(':podcastId', podcastId))
