@@ -13,6 +13,7 @@ const StyledImage = styled.img`
   height: 200px;
   border-radius: ${({ rounded }) => (rounded ? '50%' : '0%')};
   cursor: ${({ pointer }) => (pointer ? 'pointer' : 'cursor')};
+  z-index: 10;
 `
 
 export const ImageCard = ({ image, rounded = false, pointer = false, ...props }) => (
