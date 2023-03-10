@@ -25,11 +25,13 @@ export const Home = () => {
 
   return (
     <Container>
-      <Row xs={2} md={4} lg={6} className='justify-content-end' style={{ paddingBottom: '1.5rem' }}>
-        <Col className='justify-content-end'>
-          <Badge pill color='primary'>
-            {lengthTopPodcastList}
-          </Badge>
+      <Row md={3} className='justify-content-end' style={{ paddingBottom: '2.5rem' }}>
+        <Col style={{ textAlign: 'right', alignSelf: 'center' }}>
+          <h4>
+            <Badge pill color='primary'>
+              {lengthTopPodcastList}
+            </Badge>
+          </h4>
         </Col>
         <Col>
           <Input type='text' value={inputValue} onChange={onChangeInput} placeholder='Filter podcasts...' />
