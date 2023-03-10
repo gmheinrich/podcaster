@@ -7,7 +7,7 @@ import { AudioPlayer } from '../../commons/AudioPlayer'
 
 export const CardEpisode = ({ title, description, source }) => {
   return (
-    <Card className='shadow p-3 mb-5 bg-white'>
+    <Card className='shadow p-3 mb-5 bg-white' style={{ borderRadius: 0, borderColor: 'transparent' }}>
       <ListGroup flush>
         <ListGroupItem>
           <CardBody style={{ justifyContent: 'start', padding: 0 }}>

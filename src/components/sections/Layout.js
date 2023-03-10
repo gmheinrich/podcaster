@@ -1,19 +1,11 @@
 import React from 'react'
-import { Container } from 'reactstrap'
-import styled from 'styled-components'
 import { Header } from './Header'
+import '../../App.css'
 
-const Line = styled.hr`
-  color: steelblue;
-  margin-bottom: 1.5rem;
-`
 // eslint-disable-next-line react/prop-types
 export const Layout = ({ children }) => (
-  <>
-    <Container>
-      <Header />
-      <Line />
-      {children}
-    </Container>
-  </>
+  <div className='App'>
+    <Header />
+    <div className='content'>{children}</div>
+  </div>
 )

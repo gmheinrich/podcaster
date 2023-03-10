@@ -3,6 +3,7 @@ import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card, CardBody, CardSubtitle, CardTitle } from 'reactstrap'
 import { routes } from '../../../constants/routes'
+import { ImageCard } from '../../commons/ImageCard'
 
 export const CardPodcast = ({ podcast }) => {
   const navigate = useNavigate()
@@ -14,8 +15,8 @@ export const CardPodcast = ({ podcast }) => {
 
   return (
     <div className='col'>
-      <Card body className='text-center shadow p-3 mb-5 bg-white rounded' style={{ width: '18rem' }}>
-        <img alt='image' src={imageSrc} />
+      <Card body className='text-center shadow p-3 mb-5 bg-white' style={{ width: '18rem', borderRadius: 0, borderColor: 'transparent' }}>
+        <ImageCard image={imageSrc} rounded />
         <CardBody>
           <CardTitle tag='h5'>
             <div style={{ cursor: 'pointer' }} onClick={goToPodcast}>
