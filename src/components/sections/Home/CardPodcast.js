@@ -12,6 +12,7 @@ const StyleCardContainer = styled.div`
   position: relative;
   height: 450px;
   z-index: 8;
+  align-items: center;
 `
 
 const StyleCardBody = styled.div`
