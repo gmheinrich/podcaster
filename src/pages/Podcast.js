@@ -1,66 +1,36 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Col, Container, Row } from 'reactstrap'
 import { CardPodcastFull } from '../components/commons/CardPodcastFull'
-import GlobalDataContext from '../components/GlobalDataContext'
 import { TableEpisodes } from '../components/sections/Podcast/TableEpisodes'
 import { TableResume } from '../components/sections/Podcast/TableResume'
-import { routes } from '../constants/routes'
-import { getDescription } from '../utils/getDescription'
+import { useGetPodcast } from '../hooks/useGetPodcast'
 
 export const Podcast = () => {
-  const { setLoading } = useContext(GlobalDataContext)
   const { podcastId } = useParams()
-  const [summary, setSummary] = useState({})
-  const [collection, setCollection] = useState([])
-  const [description, setDescription] = useState()
-
-  // const url = `${routes.prefixURL}${routes.podcastEpisodes.replace('{podcastId}', podcastId)}`
-  const url = routes.podcastEpisodes.replace('{podcastId}', podcastId)
+  const [propsToCardPodcastFull, setPropsToCardPodcastFull] = useState()
+  const { summary, collection, description } = useGetPodcast(podcastId)
 
   useEffect(() => {
-    setLoading(true)
-    axios
-      .get(url)
-      .then((res) => {
-        const results = res.data.results
-        setSummary(results.shift())
-        setCollection(results)
+    if (summary && description) {
+      setPropsToCardPodcastFull({
+        podcastId,
+        title: summary?.collectionName,
+        artist: summary?.artistName,
+        image: summary?.artworkUrl600,
+        description: description,
       })
-      .catch((error) => console.log(error))
-  }, [axios])
-
-  useEffect(() => {
-    if (summary.feedUrl) {
-      axios
-        .get(summary.feedUrl)
-        .then((res) => {
-          setDescription(getDescription(res.data))
-          setLoading(false)
-        })
-        .catch((error) => console.log(error))
     }
-  })
-
-  const propsToCardPodcastFull = {
-    podcastId,
-    title: summary.collectionName,
-    artist: summary.artistName,
-    image: summary.artworkUrl600,
-    description,
-  }
+  }, [summary, description])
 
   return (
     <>
       <Container>
         <Row>
-          <Col>
-            <CardPodcastFull {...propsToCardPodcastFull} />
-          </Col>
+          <Col>{propsToCardPodcastFull ? <CardPodcastFull {...propsToCardPodcastFull} /> : null}</Col>
           <Col lg={8}>
-            <TableResume total={summary.trackCount} />
-            <TableEpisodes collection={collection} propsToCardPodcastFull={propsToCardPodcastFull} />
+            {summary ? <TableResume total={summary.trackCount} /> : null}
+            {collection && propsToCardPodcastFull ? <TableEpisodes collection={collection} propsToCardPodcastFull={propsToCardPodcastFull} /> : null}
           </Col>
         </Row>
       </Container>
